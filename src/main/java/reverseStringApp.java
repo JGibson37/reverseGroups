@@ -4,38 +4,51 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class reverseStringApp {
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\jason\\IdeaProjects\\reverseGroups\\src\\test\\java\\Test1.text"));
-        String input;
+        List<String> filePathList = Arrays.asList(
+                "C:\\Users\\jason\\IdeaProjects\\reverseGroups\\src\\test\\java\\Test1.text",
+                "C:\\Users\\jason\\IdeaProjects\\reverseGroups\\src\\test\\java\\Test2.text");
+        filePathList.forEach(filePath -> {
+            try {
+                try (BufferedReader br = new BufferedReader(new FileReader(filePath));){
+            String input;
 
-        while ((input = br.readLine()) != null) {
-            String[] firstSplit = input.split(";");
-            String[] lineNums = firstSplit[0].split(",");
-            int k = Integer.parseInt(firstSplit[1]);
-            int[] numbers = new int[5];
-            List<String> numList = new ArrayList<>();
+            while ((input = br.readLine()) != null) {
+                String[] firstSplit = input.split(";");
+                String[] lineNums = firstSplit[0].split(",");
+                int k = Integer.parseInt(firstSplit[1]);
+                int[] numbers = new int[5];
+                List<String> numList = new ArrayList<>();
 
-            for (int z = 0; z < lineNums.length; z++) {
-                numbers[z] = Integer.parseInt(lineNums[z]);
-            }
-
-            for (int currentPosition = 0; currentPosition < numbers.length; currentPosition = currentPosition + k) {
-                if(currentPosition+k >= numbers.length){
-                    break;
+                for (int z = 0; z < lineNums.length; z++) {
+                    numbers[z] = Integer.parseInt(lineNums[z]);
                 }
-                int currentNumber = numbers[currentPosition];
-                int numberToSwapWith = numbers[currentPosition + (k-1)];
-                numbers[currentPosition + (k-1)] = currentNumber;
-                numbers[currentPosition] = numberToSwapWith;
 
+                for (int currentPosition = 0; currentPosition < numbers.length; currentPosition = currentPosition + k) {
+                    if(currentPosition+k >= numbers.length){
+                        break;
+                    }
+                    int currentNumber = numbers[currentPosition];
+                    int numberToSwapWith = numbers[currentPosition + (k-1)];
+                    numbers[currentPosition + (k-1)] = currentNumber;
+                    numbers[currentPosition] = numberToSwapWith;
+
+                }
+                for (int x = 0; x < 5; x++) {
+                    numList.add(String.valueOf(numbers[x]));
+                }
+                System.out.println(numList);
             }
-            for (int x = 0; x < 5; x++) {
-                numList.add(String.valueOf(numbers[x]));
+        } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            System.out.println(numList);
-        }
+        });
     }
 }
