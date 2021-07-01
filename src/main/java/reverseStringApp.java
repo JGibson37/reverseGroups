@@ -10,7 +10,8 @@ public class reverseStringApp {
         String input;
 
         while((input = br.readLine()) != null){
-            String[] lineNums = input.split(",");
+            String[] firstSplit = input.split(";");
+            String[] lineNums = firstSplit[0].split(",");
 
             for(int x=0; x < lineNums.length; x++){
                 System.out.println(lineNums[x]);
