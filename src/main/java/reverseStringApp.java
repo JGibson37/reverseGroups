@@ -15,10 +15,17 @@ public class reverseStringApp {
             int[] numbers = new int[5];
 
             for(int y=0; y<lineNums.length; y++){
+                int k = Integer.parseInt(firstSplit[1]);
                 numbers[y] = Integer.parseInt(lineNums[y]);
+                if(numbers[y] % k == 0){
+                    int numToMove = numbers[y];
+                    int numToSave = numbers[y-1];
+                    numbers[y] = numToSave;
+                    numbers[y-1] = numToMove;
+                }
             }
 
-            for(int x=0; x < lineNums.length; x++){
+            for(int x=0; x < numbers.length; x++){
                 System.out.println(numbers[x]);
             }
         }
