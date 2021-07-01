@@ -1,5 +1,5 @@
 # reverseGroups
-  Programming challenge description:
+ Programming challenge description:
  Given a list of numbers and a positive integer k, reverse the elements of the list, k items at a time. 
  If the number of elements is not a multiple of k, then the remaining items in the end should be left as is.
  
