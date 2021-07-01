@@ -10,7 +10,11 @@ public class reverseStringApp {
         String input;
 
         while((input = br.readLine()) != null){
-            System.out.println(input);
+            String[] lineNums = input.split(",");
+
+            for(int x=0; x < lineNums.length; x++){
+                System.out.println(lineNums[x]);
+            }
         }
     }
 }
