@@ -12,9 +12,14 @@ public class reverseStringApp {
         while((input = br.readLine()) != null){
             String[] firstSplit = input.split(";");
             String[] lineNums = firstSplit[0].split(",");
+            int[] numbers = new int[5];
+
+            for(int y=0; y<lineNums.length; y++){
+                numbers[y] = Integer.parseInt(lineNums[y]);
+            }
 
             for(int x=0; x < lineNums.length; x++){
-                System.out.println(lineNums[x]);
+                System.out.println(numbers[x]);
             }
         }
     }
